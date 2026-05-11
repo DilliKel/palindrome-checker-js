@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teste de Palíndromo</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 14px;
+      width: 400px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #3b82f6;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #2563eb;
+    }
+
+    .resultado {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      background: #334155;
+    }
+
+    .linha {
+      margin-bottom: 10px;
+    }
+
+    .sucesso {
+      color: #22c55e;
+      font-weight: bold;
+    }
+
+    .erro {
+      color: #ef4444;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Teste de Palíndromo</h1>
+
+    <input 
+      type="text" 
+      id="entrada" 
+      placeholder="Digite uma palavra ou frase"
+    >
+
+    <button onclick="verificarPalindromo()">
+      Verificar
+    </button>
+
+    <div class="resultado" id="resultado">
+      Aguardando entrada...
+    </div>
+  </div>
+
+  <script>
+    function verificarPalindromo() {
+
+      const textoOriginal = document
+        .getElementById("entrada")
+        .value;
+
+      const textoTratado = textoOriginal
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]/g, "");
+
+      const textoInvertido = textoTratado
+        .split("")
+        .reverse()
+        .join("");
+
+      const resultado = document.getElementById("resultado");
+
+      if (textoTratado === "") {
+        resultado.innerHTML = `
+          <div class="erro">
+            Digite algum texto.
+          </div>
+        `;
+        return;
+      }
+
+      const ehPalindromo = textoTratado === textoInvertido;
+
+      resultado.innerHTML = `
+        <div class="linha">
+          <strong>Texto original:</strong>
+          ${textoOriginal}
+        </div>
+
+        <div class="linha">
+          <strong>Texto invertido:</strong>
+          ${textoInvertido}
+        </div>
+
+        <div class="${ehPalindromo ? 'sucesso' : 'erro'}">
+          ${ehPalindromo 
+            ? 'É um palíndromo!' 
+            : 'Não é um palíndromo.'}
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
