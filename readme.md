@@ -45,7 +45,7 @@ A mãe te ama
 Clone o repositório:
 
 ```bash
-git clone https://github.com/SEU-USUARIO/palindrome-checker-js.git
+git clone https://github.com/DilliKel/palindrome-checker-js.git
 ```
 
 Acesse a pasta do projeto:
@@ -131,4 +131,4 @@ const ehPalindromo = textoTratado === textoInvertido;
 
 ## Autor
 
-Feito por **Kelvin Araújo**.
+**Kelvin Araújo Ferreira** — [linkedin.com/in/dillikel](https://linkedin.com/in/dillikel)
