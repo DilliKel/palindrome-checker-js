@@ -127,7 +127,6 @@ const ehPalindromo = textoTratado === textoInvertido;
 - Verificar automaticamente enquanto o usuário digita
 - Adicionar modo claro e modo escuro
 - Melhorar a responsividade para dispositivos móveis
-- Publicar o projeto com GitHub Pages
 
 ## Autor
 
